@@ -9,31 +9,35 @@ import java.util.Objects;
 public class Game {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
 
     @Column(name = "game_year")
     private String year;
     private String genre;
-    private String platform;
+    private String platforms;
+    private Double score;
     private String imgUrl;
+    @Column(columnDefinition = "TEXT")
     private String shortDescription;
+    @Column(columnDefinition = "TEXT")
     private String longDescription;
 
 
     public Game() {
     }
 
-    public Game(Long id, String longDescription, String shortDescription, String imgUrl, String platform, String genre, String title) {
+    public Game(Long id, String title, String year, String genre, String platforms, Double score, String imgUrl, String longDescription, String shortDescription) {
         this.id = id;
+        this.title = title;
+        this.year = year;
+        this.genre = genre;
+        this.platforms = platforms;
+        this.score = score;
+        this.imgUrl = imgUrl;
         this.longDescription = longDescription;
         this.shortDescription = shortDescription;
-        this.imgUrl = imgUrl;
-        this.platform = platform;
-        this.genre = genre;
-        this.title = title;
     }
 
     public Long getId() {
@@ -60,6 +64,14 @@ public class Game {
         this.shortDescription = shortDescription;
     }
 
+    public Double getScore() {
+        return score;
+    }
+
+    public void setScore(Double score) {
+        this.score = score;
+    }
+
     public String getImgUrl() {
         return imgUrl;
     }
@@ -68,12 +80,12 @@ public class Game {
         this.imgUrl = imgUrl;
     }
 
-    public String getPlatform() {
-        return platform;
+    public String getPlatforms() {
+        return platforms;
     }
 
-    public void setPlatform(String platform) {
-        this.platform = platform;
+    public void setPlatforms(String platforms) {
+        this.platforms = platforms;
     }
 
     public String getGenre() {
@@ -90,6 +102,14 @@ public class Game {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getYear() {
+        return year;
+    }
+
+    public void setYear(String year) {
+        this.year = year;
     }
 
     @Override
